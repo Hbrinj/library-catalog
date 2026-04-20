@@ -1,0 +1,138 @@
+{
+  "version": "1.0",
+  "description": "Predefined categories and sub-categories for classifying libraries by use case. When adding a library, pick ONE category and ONE sub-category that best matches its primary use case. If nothing fits, use 'Other' > 'Uncategorized' rather than forcing a bad match.",
+  "categories": {
+    "Web Development": [
+      "Web Framework",
+      "HTTP Client",
+      "Template Engine",
+      "WebSocket Library",
+      "GraphQL",
+      "REST API Utilities",
+      "Static Site Generator",
+      "Routing"
+    ],
+    "Data & Storage": [
+      "ORM / Database Driver",
+      "Query Builder",
+      "Caching",
+      "Search Engine Client",
+      "Message Queue / Broker",
+      "Serialization / Encoding",
+      "Migration / Schema Tool",
+      "Object Storage / Blob"
+    ],
+    "Machine Learning & AI": [
+      "Deep Learning Framework",
+      "Classical ML",
+      "Natural Language Processing",
+      "Computer Vision",
+      "LLM Tooling / Orchestration",
+      "Vector Database / Embeddings",
+      "Reinforcement Learning",
+      "Data Science / Analytics",
+      "MLOps"
+    ],
+    "Testing & Quality": [
+      "Testing Framework",
+      "Mocking / Fixtures",
+      "Assertion Library",
+      "Code Coverage",
+      "Property-based Testing",
+      "Linter / Static Analysis",
+      "Formatter",
+      "Fuzzing"
+    ],
+    "DevOps & Infrastructure": [
+      "CI/CD Tooling",
+      "Monitoring / Observability",
+      "Logging",
+      "Tracing",
+      "Container / Orchestration",
+      "Infrastructure as Code",
+      "Configuration Management",
+      "Secrets Management"
+    ],
+    "Security & Authentication": [
+      "Authentication / OAuth",
+      "Authorization",
+      "Cryptography / Hashing",
+      "Security Scanning",
+      "Password / Token Management",
+      "TLS / Certificates"
+    ],
+    "CLI & Developer Tools": [
+      "CLI Framework",
+      "Build Tool / Bundler",
+      "Package Manager",
+      "Code Generation",
+      "Debugger / Profiler",
+      "REPL / Interactive Shell",
+      "Documentation Generator",
+      "Task Runner"
+    ],
+    "UI & Frontend": [
+      "UI Component Library",
+      "State Management",
+      "CSS / Styling",
+      "Animation / Graphics",
+      "Data Visualization / Charting",
+      "Desktop GUI",
+      "Mobile UI",
+      "Forms / Input"
+    ],
+    "Networking & Protocols": [
+      "gRPC / RPC",
+      "Low-level Networking",
+      "Service Discovery",
+      "Load Balancing / Proxy",
+      "Email / SMTP",
+      "DNS",
+      "Peer-to-Peer"
+    ],
+    "Utilities & General": [
+      "Date / Time",
+      "Validation",
+      "Configuration / Env",
+      "Concurrency / Async",
+      "Collections / Data Structures",
+      "Functional Programming",
+      "Regular Expressions",
+      "File / Path Handling",
+      "Error Handling",
+      "Internationalization"
+    ],
+    "Media & Content": [
+      "Image Processing",
+      "Audio / Video",
+      "PDF / Documents",
+      "Markdown / Text Processing",
+      "Compression / Archives",
+      "OCR"
+    ],
+    "Game Development": [
+      "Game Engine",
+      "Physics",
+      "Graphics / Rendering",
+      "Audio / Sound",
+      "Input / Controllers"
+    ],
+    "Scientific & Numerical": [
+      "Numerical Computing",
+      "Statistics",
+      "Bioinformatics",
+      "Geospatial / GIS",
+      "Symbolic Math",
+      "Optimization"
+    ],
+    "Hardware & Embedded": [
+      "Embedded / Microcontroller",
+      "IoT",
+      "Robotics",
+      "Serial / USB"
+    ],
+    "Other": [
+      "Uncategorized"
+    ]
+  }
+}
