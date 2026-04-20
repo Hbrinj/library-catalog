@@ -22,14 +22,17 @@ If the user asks something that isn't one of these (e.g. "which of these is best
 ```
 library-catalog/
 ├── SKILL.md
+├── version.json             ← skill version (semver)
 ├── data/
-│   ├── libraries.json   ← the catalog (schema below)
-│   └── taxonomy.json    ← allowed categories and sub-categories
+│   ├── libraries.json       ← the catalog (schema below)
+│   └── taxonomy.json        ← allowed categories and sub-categories
 └── scripts/
     ├── fetch_repo_metadata.py   ← GitHub → metadata JSON
     ├── add_library.py           ← validate + append to libraries.json
     ├── search_libraries.py      ← query the catalog
-    └── list_categories.py       ← show the taxonomy
+    ├── list_categories.py       ← show the taxonomy
+    ├── update_skill.py          ← pull updates from remote
+    └── bump_version.py          ← increment the version
 ```
 
 ### Library entry schema
@@ -196,6 +199,39 @@ The taxonomy in `data/taxonomy.json` is not sacred — if the user adds several 
 - **Use cases are the product.** Stars and topics come from GitHub; what makes this catalog useful later is the human-curated `use_cases` field. When ingesting, spend your judgement budget there.
 - **Deduplication is by `full_name`.** `owner/repo` identifies a library uniquely. Case-insensitive comparison handles the `MyOrg/repo` vs `myorg/repo` ambiguity.
 - **The catalog file stays sorted** by `full_name` after every write — this keeps git diffs clean when the skill is re-packaged.
+
+## Updating the skill
+
+The skill tracks its version in `version.json` using semver. To check for and apply updates from the remote GitHub repository:
+
+```bash
+# Check if an update is available
+python3 scripts/update_skill.py --check
+
+# Apply the update (preserves local libraries.json)
+python3 scripts/update_skill.py
+
+# Force update even if versions match
+python3 scripts/update_skill.py --force
+
+# Update from a different repo or branch
+python3 scripts/update_skill.py --repo owner/repo --branch develop
+```
+
+The update script compares the local `version.json` against the remote. If the remote version is newer, it shallow-clones the repo, copies updated files (scripts, taxonomy, SKILL.md, version.json), and **preserves the local `data/libraries.json`** so user-added entries are not lost.
+
+### Bumping the version
+
+Before pushing changes to the remote, bump the version so installed copies can detect the update:
+
+```bash
+python3 scripts/bump_version.py            # minor: 0.1.0 → 0.2.0
+python3 scripts/bump_version.py --major     # major: 0.1.0 → 1.0.0
+python3 scripts/bump_version.py --patch     # patch: 0.1.0 → 0.1.1
+python3 scripts/bump_version.py --set 2.0.0 # explicit
+```
+
+The typical release workflow is: make changes → `bump_version.py` → commit → push.
 
 ## Persistence model
 
